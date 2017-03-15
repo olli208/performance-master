@@ -16,3 +16,6 @@ Differences from actual Bootstrap documentation:
 - Install dependencies: `npm install`
 - Serve: `npm start`
 - Expose localhost: `npm run expose`
+
+# After Clean/Concast CSS
+It got worse. The base pagespeed insight score was 46 for dektop and after this it went to 45.
