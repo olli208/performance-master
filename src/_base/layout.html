@@ -4,8 +4,10 @@
     {% include './app-meta.html' %}
     
     <link href="/dist/css/bundle.css" rel="stylesheet">
+    <link href="/dist/css/fonts.css" rel="stylesheet">
 
     <script src="/dist/js/bundle.js" defer></script>
+    <script src="/dist/js/font_face_obs.js" defer></script>
 
     {% block head_extra %}{% endblock %}
 </head>
@@ -15,5 +17,35 @@
     {% block body %}{% endblock %}
 
     {% block scripts_extra %}{% endblock %}
+
+<script>
+    var sourceSansProRegular, sourceSansProItalic, sourceSansProRegularB, sourceSansProItalicB;
+
+    sourceSansProItalic = new FontFaceObserver('source_sans_pro' , {
+        style: 'italic'
+    });
+
+    sourceSansProRegular = new FontFaceObserver('source_sans_pro' , {
+        weight: '300'
+    });
+
+    sourceSansProRegularB = new FontFaceObserver('source_sans_pro' , {
+        weight: '400'
+    });
+
+    sourceSansProItalicB = new FontFaceObserver('source_sans_pro' , {
+        weight: '400'
+    });
+
+    Promise.all([
+        sourceSansProItalic.load(),
+        sourceSansProRegular.load(),
+        sourceSansProRegularB.load(),
+        sourceSansProItalicB.load()
+    ]).then(function() {
+        document.documentElement.className += ' fonts-loaded';
+    });
+
+</script>
 </body>
 </html>

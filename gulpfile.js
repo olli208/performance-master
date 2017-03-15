@@ -7,8 +7,9 @@ var concatJS = require('gulp-concat');
 var image = require('gulp-image');
 var webp = require('gulp-webp');
 
+
 gulp.task('CSS', function () {
-    return gulp.src(['src/dist/css/*.css' , 'src/assets/css/src/docs.css'])
+    return gulp.src(['src/dist/css/bootstrap.css' , 'src/dist/css/bootstrap-theme.css' , 'src/assets/css/src/docs.css'])
         .pipe(concatCSS("bundle.css"))
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('src/dist/css'));
