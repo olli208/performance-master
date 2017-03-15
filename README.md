@@ -33,4 +33,4 @@ Using webp makes a significant difference. The ssore is now 56/100 & 65/100.
 After using the plugin, we get a score of 66/100 & 74/100. Besides that, we also store the new class in sessionStorage, so when the user reloads or goes to another page the font is known and we don't have to wait for it to load. Making the browsing experience a bit quicker and This eliminates FOIT("Flash of Invisible Text")
 
 ## Critical CSS
-I generated a critical css using [this site](https://jonassebastianohlsson.com/criticalpathcssgenerator/). The bootstrap.css from the dist is now added as critical CSS to the inline in the <head>. I thnk it works as the pagespeeed insight score is now 73/100 & 80/100.
+I generated a critical css using [this site](https://jonassebastianohlsson.com/criticalpathcssgenerator/). The bootstrap.css from the dist is now added as critical CSS to the inline in the <head>. I thnk it works as the pagespeeed insight score is now 69/100 & 79/100.
