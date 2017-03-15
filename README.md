@@ -27,3 +27,7 @@ score is now 47/100.
 score is now 57/100 & 59/100. 
 
 Using webp makes a significant difference. The ssore is now 56/100 & 65/100.
+
+## After FontFaceObserver
+
+After using the plugin, we get a score of 66/100 & 74/100. Besides that, we also store the new class in sessionStorage, so when the user reloads or goes to another page the font is known and we don't have to wait for it to load. Making the browsing experience a bit quicker and This eliminates FOIT("Flash of Invisible Text")

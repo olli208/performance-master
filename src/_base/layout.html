@@ -2,13 +2,49 @@
 <html lang="en">
 <head>
     {% include './app-meta.html' %}
-    
+
     <link href="/dist/css/bundle.css" rel="stylesheet">
     <link href="/dist/css/fonts.css" rel="stylesheet">
 
+    <script src="/assets/js/vendor/jquery.min.js" defer></script>
     <script src="/dist/js/bundle.js" defer></script>
-    <script src="/dist/js/font_face_obs.js" defer></script>
+    <script src="/dist/js/fontfaceobserver.js"></script>
+    <script>
+        var italic, regular, regularBold, italicBold;
+        var html = document.documentElement;
 
+        if (!sessionStorage.fontsLoaded) {
+            italic = new FontFaceObserver('source_sans_pro', {
+                weight: 300,
+                style: 'italic'
+            });
+
+            regular = new FontFaceObserver('source_sans_pro', {
+                weight: 300,
+                style: 'normal'
+            });
+
+            regularBold = new FontFaceObserver('source_sans_pro', {
+                weight: 400,
+                style: 'normal'
+            });
+
+            italicBold = new FontFaceObserver('source_sans_pro', {
+                weight: 400,
+                style: 'italic'
+            });
+
+            Promise.all([
+                italic.load(), regular.load(), regularBold.load(), italicBold.load()
+            ]).then(function () {
+                html.className += ' fonts-loaded';
+                sessionStorage.fontsLoaded = true;
+            });
+        } else {
+            html.className += ' fonts-loaded';
+        }
+
+    </script>
     {% block head_extra %}{% endblock %}
 </head>
 
@@ -18,34 +54,5 @@
 
     {% block scripts_extra %}{% endblock %}
 
-<script>
-    var sourceSansProRegular, sourceSansProItalic, sourceSansProRegularB, sourceSansProItalicB;
-
-    sourceSansProItalic = new FontFaceObserver('source_sans_pro' , {
-        style: 'italic'
-    });
-
-    sourceSansProRegular = new FontFaceObserver('source_sans_pro' , {
-        weight: '300'
-    });
-
-    sourceSansProRegularB = new FontFaceObserver('source_sans_pro' , {
-        weight: '400'
-    });
-
-    sourceSansProItalicB = new FontFaceObserver('source_sans_pro' , {
-        weight: '400'
-    });
-
-    Promise.all([
-        sourceSansProItalic.load(),
-        sourceSansProRegular.load(),
-        sourceSansProRegularB.load(),
-        sourceSansProItalicB.load()
-    ]).then(function() {
-        document.documentElement.className += ' fonts-loaded';
-    });
-
-</script>
 </body>
 </html>
