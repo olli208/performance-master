@@ -17,5 +17,8 @@ Differences from actual Bootstrap documentation:
 - Serve: `npm start`
 - Expose localhost: `npm run expose`
 
-# After Clean/Concast CSS
+## After Clean/Concast CSS
 It got worse. The base pagespeed insight score was 46 for dektop and after this it went to 45.
+
+## After uglify js
+No difference in pagespeed insights
