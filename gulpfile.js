@@ -6,12 +6,19 @@ var pump = require('pump');
 var concatJS = require('gulp-concat');
 var image = require('gulp-image');
 var webp = require('gulp-webp');
-var critical = require('critical');
+var critical = require('critical').stream;
 
 
 gulp.task('CSS', function () {
-    return gulp.src(['src/dist/css/bootstrap.css' , 'src/dist/css/bootstrap-theme.css' , 'src/assets/css/src/docs.css'])
+    return gulp.src(['src/dist/css/bootstrap-theme.css' , 'src/assets/css/src/docs.css'])
         .pipe(concatCSS("bundle.css"))
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(gulp.dest('src/dist/css'));
+});
+
+
+gulp.task('crit', function () {
+    return gulp.src('src/dist/css/crit-css.css')
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('src/dist/css'));
 });
@@ -20,7 +27,7 @@ gulp.task('critical', function () {
     return gulp.src('src/index.html')
         .pipe(critical({base: 'dist/', inline: true, css: ['src/dist/css/bundle.css']}))
         .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
-        .pipe(gulp.dest('src/dist/css'));
+        .pipe(gulp.dest('src/dist/'));
 });
 
 gulp.task('uglifyJS', function (cb) {
