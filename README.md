@@ -24,4 +24,6 @@ It got worse. The base pagespeed insight score was 46 for dektop and after this 
 score is now 47/100.
 
 ## After image optimization
-score is now 57/100 & 59/100
+score is now 57/100 & 59/100. 
+
+Using webp makes a significant difference. The ssore is now 56/100 & 65/100.
