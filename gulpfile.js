@@ -6,12 +6,20 @@ var pump = require('pump');
 var concatJS = require('gulp-concat');
 var image = require('gulp-image');
 var webp = require('gulp-webp');
+var critical = require('critical');
 
 
 gulp.task('CSS', function () {
     return gulp.src(['src/dist/css/bootstrap.css' , 'src/dist/css/bootstrap-theme.css' , 'src/assets/css/src/docs.css'])
         .pipe(concatCSS("bundle.css"))
         .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(gulp.dest('src/dist/css'));
+});
+
+gulp.task('critical', function () {
+    return gulp.src('src/index.html')
+        .pipe(critical({base: 'dist/', inline: true, css: ['src/dist/css/bundle.css']}))
+        .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
         .pipe(gulp.dest('src/dist/css'));
 });
 
@@ -46,3 +54,4 @@ gulp.task('webp', function () {
 
 gulp.task('JS' , ['concatJS' , 'uglifyJS']);
 gulp.task('images' , ['image' , 'webp']);
+gulp.task('default' , ['JS' , 'CSS' , 'images']);
