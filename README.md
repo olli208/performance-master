@@ -20,5 +20,8 @@ Differences from actual Bootstrap documentation:
 ## After Clean/Concast CSS
 It got worse. The base pagespeed insight score was 46 for dektop and after this it went to 45.
 
-## After uglify js
-No difference in pagespeed insights
+## After uglify js and bundling the JS files
+score is now 47/100.
+
+## After image optimization
+score is now 57/100 & 59/100
