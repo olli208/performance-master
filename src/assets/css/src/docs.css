@@ -18,6 +18,14 @@
  * Update the basics of our documents to prep for docs content.
  */
 
+html {
+  font-family: Helvetica, sans-serif;
+}
+
+html.fonts-loaded {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 body {
   position: relative; /* For scrollspy */
 }
