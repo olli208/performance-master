@@ -3,6 +3,7 @@ var cleanCSS = require('gulp-clean-css');
 var concatCSS = require('gulp-concat-css');
 var uglifyJS = require('gulp-uglify');
 var pump = require('pump');
+var concatJS = require('gulp-concat');
 
 gulp.task('CSS', function () {
     return gulp.src(['src/dist/css/*.css' , 'src/assets/css/src/docs.css'])
@@ -11,7 +12,7 @@ gulp.task('CSS', function () {
         .pipe(gulp.dest('src/dist/css'));
 });
 
-gulp.task('JS', function (cb) {
+gulp.task('uglifyJS', function (cb) {
     pump([
             gulp.src('src/dist/js/bootstrap.js'),
             uglifyJS(),
@@ -21,3 +22,10 @@ gulp.task('JS', function (cb) {
     );
 });
 
+gulp.task('concatJS', function() {
+    return gulp.src('src/dist/js/*.js')
+        .pipe(concatJS('bundle.js'))
+        .pipe(gulp.dest('src/dist/js'));
+});
+
+gulp.task('JS' , ['uglifyJS' , 'concatJS']);
