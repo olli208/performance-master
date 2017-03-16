@@ -12,29 +12,19 @@
         var html = document.documentElement;
 
         if (!sessionStorage.fontsLoaded) {
-            italic = new FontFaceObserver('source_sans_pro', {
-                weight: 300,
-                style: 'italic'
+            italic = new FontFaceObserver('source_sans_pro', {weight: 300, style: 'italic'
             });
 
-            regular = new FontFaceObserver('source_sans_pro', {
-                weight: 300,
-                style: 'normal'
+            regular = new FontFaceObserver('source_sans_pro', {weight: 300, style: 'normal'
             });
 
-            regularBold = new FontFaceObserver('source_sans_pro', {
-                weight: 400,
-                style: 'normal'
+            regularBold = new FontFaceObserver('source_sans_pro', {weight: 400, style: 'normal'
             });
 
-            italicBold = new FontFaceObserver('source_sans_pro', {
-                weight: 400,
-                style: 'italic'
+            italicBold = new FontFaceObserver('source_sans_pro', {weight: 400, style: 'italic'
             });
 
-            Promise.all([
-                italic.load(), regular.load(), regularBold.load(), italicBold.load()
-            ]).then(function () {
+            Promise.all([italic.load(), regular.load(), regularBold.load(), italicBold.load()]).then(function () {
                 html.className += ' fonts-loaded';
                 sessionStorage.fontsLoaded = true;
             });

@@ -33,7 +33,7 @@ gulp.task('uglifyJS', function (cb) {
 });
 
 gulp.task('concatJS', function() {
-    return gulp.src(['src/assets/js/vendor/jquery.min.js' , 'src/dist/js/bootstrap.js' , 'src/assets/js/docs.min.js'])
+    return gulp.src(['src/assets/js/vendor/jquery.min.js' , 'src/dist/js/bootstrap.js'])
         .pipe(concatJS('bundle.js'))
         .pipe(gulp.dest('src/dist/js'));
 });
