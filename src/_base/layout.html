@@ -32,6 +32,17 @@
     <script>
         loadJS( "/dist/js/bundle.js");
     </script>
+
+    {% block head_extra %}{% endblock %}
+
+</head>
+
+<body {% block body_attributes %}{% endblock %}>
+
+    {% block body %}{% endblock %}
+
+    {% block scripts_extra %}{% endblock %}
+
     <script src="/dist/js/fontfaceobserver.js"></script>
     <script>
         var italic, regular, regularBold, italicBold;
@@ -58,16 +69,6 @@
             html.className += ' fonts-loaded';
         }
     </script>
-
-    {% block head_extra %}{% endblock %}
-
-</head>
-
-<body {% block body_attributes %}{% endblock %}>
-
-    {% block body %}{% endblock %}
-
-    {% block scripts_extra %}{% endblock %}
 
     <link rel="stylesheet" href="/dist/css/bundle.css">
     <style>
