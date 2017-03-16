@@ -34,3 +34,6 @@ After using the plugin, we get a score of 66/100 & 74/100. Besides that, we also
 
 ## Critical CSS
 I generated a critical css using [this site](https://jonassebastianohlsson.com/criticalpathcssgenerator/). The docs.css from the assets is now added as critical CSS to the inline in the <head>. I think it works as the pagespeeed insight score is now 66/100 & 75/100.
+
+## After applying loadCSS
+When throttling the cconnection to 2G (300ms), we see that the page loads way faster than without it. But the iniitial page doesnt look good because the nav is in the bootstrap.css folder, which we dont have in the critical CSS. We need to manually move that part of the code to the critical CSS for the page to look good, but I think it's worth it. Pagespeed Insight score is now: 92/100 & 86/100.
