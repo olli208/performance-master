@@ -17,6 +17,9 @@ Differences from actual Bootstrap documentation:
 - Serve: `npm start`
 - Expose localhost: `npm run expose`
 
+## Before any optimizations
+sdsd
+
 ## After Clean/Concast CSS
 It got worse. The base pagespeed insight score was 46 for dektop and after this it went to 45.
 
@@ -38,7 +41,17 @@ I generated a critical css using [this site](https://jonassebastianohlsson.com/c
 ## After applying loadCSS
 When throttling the cconnection to 2G (300ms), we see that the page loads way faster than without it. But the iniitial page doesnt look good because the nav is in the bootstrap.css folder, which we dont have in the critical CSS. We need to manually move that part of the code to the critical CSS for the page to look good, but I think it's worth it. Pagespeed Insight score is now: 92/100 & 86/100.
 
-## Last things 
+## Final optimizations
 After Gzipping and modifying the critical CSS, and putting the fontfaceobserver down at the bottom of the body I finaly got the 100/100 score. Web Page Test gives different results but I have records of the tests I've ran.
 
-![Timeline After](audit/timeline_after.png)![PageSpeedInsight After](audit/psi_after.png)
+## Result 
+
+Timeline:
+![Timeline After](audit/timeline_after.png)
+
+Pagespeed Insights:
+![PageSpeedInsight After](audit/psi_after.png)
+
+Network on regular 2G:
+![Network 2G After](audit/network_after-2g.png)
+
