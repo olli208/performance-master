@@ -47,7 +47,7 @@ After Gzipping and modifying the critical CSS, and putting the fontfaceobserver 
 ## Result 
 
 Timeline:
-![Timeline After](audit/timeline_after.png)
+- ![Timeline After](audit/timeline_after.png)
 
 Pagespeed Insights:
 ![PageSpeedInsight After](audit/psi_after.png)
