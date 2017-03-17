@@ -49,7 +49,7 @@ When throttling the cconnection to 2G (300ms), we see that the page loads way fa
 ![after loadCSS](audit/after_loadcss.png)
 
 ## Final optimizations
-After Gzipping and modifying the critical CSS, and putting the fontfaceobserver down at the bottom of the body I finaly got the 100/100 score. Web Page Test gives different results but I have records of the tests I've ran.
+After Gzipping and modifying the critical CSS, and putting the fontfaceobserver down at the bottom of the body I finaly got the 100/100 score. Web Page Test gives different results but I have records of the tests I've ran. I also removed loadCSS, although it made the page rendering faster the result was that the nav doesnt have any CSS in the beginning. Tha's something I have to look further into.
 
 ## Result 
 
