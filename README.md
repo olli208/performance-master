@@ -40,3 +40,5 @@ When throttling the cconnection to 2G (300ms), we see that the page loads way fa
 
 ## Last things 
 After Gzipping and modifying the critical CSS, and putting the fontfaceobserver down at the bottom of the body I finaly got the 100/100 score. Web Page Test gives different results but I have records of the tests I've ran.
+
+![Timeline After](audit/timeline_after.png)![PageSpeedInsight After](audit/psi_after.png)
