@@ -1,6 +1,6 @@
 # Performance matters
 
-## Project setup
+## About
 
 This project serves an adapted version of the [Bootstrap documentation website](http://getbootstrap.com/). It is based on the [github pages branche of Bootstrap](https://github.com/twbs/bootstrap/tree/gh-pages). 
 
@@ -17,31 +17,55 @@ Differences from actual Bootstrap documentation:
 - Serve: `npm start`
 - Expose localhost: `npm run expose`
 
+# Audit
+
+This project uses a modified Bootstrap page to test different optimization methods to speed the page up. Using feature branches I tested  in total 6 features/optimizations:
+- ConcatCSS/ Clean/Uglify CSS 
+- ConcatJS/ Clean/uglify JS
+- Image optimizations 
+- Fontfaceobserver
+- Critical CSS rendering
+- loadCSS
+
+
 ## Before any optimizations
-All testing is done on regular 2G network throttling using Chrome dev tool. 
 ![Before any optimizations](audit/before_opt.png)
+All testing is done on regular 2G network throttling using Chrome dev tool. Before I did any optimizations, I checked to see what the score was to get a baseline and see if there are any improvements.
 
-## After Clean/Concast CSS
-It got worse. The base pagespeed insight score was 46/100 for desktop and after this it went to 45. But I decided to keep them and went on with the next optimizations.
+
+## After Clean + Concat/bundling CSS
 ![After clean CSS](audit/after_cleancss.png)
+The first feature I tested was Clean/Concat CSS. The page was a bit slower a the score was lower than before. The base pagespeed insight score was 46/100 for desktop and after this it went to 45. But I decided to keep them and went on with the next optimizations. The reason is I use the bundled CSS later on to produce a Critical CSS stylesheet. More on that later.
 
-## After uglify js and bundling the JS files
-score is now 47/100.
+
+## After Clean + Concat/bundling JavaScript
 ![After clean JS](audit/after_cleanjs.png)
+I did the same with the Javascript as I did with the CSS. I uglified and used a Gulp plugin to bundle everything together. The Score is now 47/100.
+
 
 ## After image optimization
-I did some image compressing and the speed wen up slightly. Score is now 57/100 & 59/100. 
 ![After image compress](audit/after_imgopt.png)
+I did some image compressing and the speed went up slightly. Partly because the images on the homepage were'nt that big, so the effect was not that big. The score is now 57/100 & 59/100. 
 
-On top of that I also added webp to the images using a fallback to the compressed images. Using webp makes a significant difference. The ssore is now 56/100 & 65/100.
+On top of that I also added webp to the images using a fallback to the compressed images. Using webp makes a significant difference. The ssore is now 56/100 & 65/100. The code for this:
+
+```
+<picture>
+  <source type="image/webp" srcset="/assets/img/webp/sass-less.webp">
+  <source srcset="/assets/img/sass-less.png">
+  <img alt="Sass and Less support" class="img-responsive" src="/assets/img/sass-less.png">
+</picture>
+```
 ![after webp](audit/after_webp.png)
+
 
 ## After FontFaceObserver
 After using the plugin, we get a score of 66/100 & 74/100. Besides that, we also store the new class in sessionStorage, so when the user reloads or goes to another page the font is known and we don't have to wait for it to load. Making the browsing experience a bit quicker and This eliminates FOIT("Flash of Invisible Text")
 ![after fontfaceobserver](audit/after_fontfaceobs.png)
 
+
 ## Critical CSS
-I generated a critical css using [this site](https://jonassebastianohlsson.com/criticalpathcssgenerator/). The docs.css from the assets is now added as critical CSS to the inline in the <head>. I think it works as the pagespeeed insight score is now 66/100 & 75/100.
+I generated a critical css using [this site](https://jonassebastianohlsson.com/criticalpathcssgenerator/). The  as critical CSS to the inline in the <head>. I think it works as the pagespeeed insight score is now 66/100 & 75/100.
 ![after critical CSS](audit/after_critcss.png)
 
 ## After applying loadCSS
